@@ -1,3 +1,13 @@
 <p>episode-list works!</p>
-{{ episodeList }}
-
+<div id="episodeDisplay" *ngFor="let episode of episodeList">
+  <div class="episode">
+    <div id="epId">ID: {{ episode.id }}</div>
+    <div id="epName">Name: {{ episode.name }}</div>
+    <div id="air_date">Air Date: {{ episode.air_date }}</div>
+    <div id="ep">Episode: {{ episode.episode }}</div>
+    <div id="characters">Characters: {{ episode.characters }}</div>
+    <div id="url">Link: {{ episode.url }}</div>
+    <div id="created">Created: {{ episode.created }}</div>
+  </div>
+</div>
+<!-- <button (click)="getNext()")>NEXT PAGE</button> -->

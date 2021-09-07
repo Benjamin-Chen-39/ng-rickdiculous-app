@@ -49,7 +49,7 @@ describe('EpisodeListComponent', () => {
 
   it('should fill the ApiRicksponse interface', () => {
     service
-      .getAll()
+      .getAll('https://rickandmortyapi.com/api/episode')
       .subscribe((data) =>
         expect(component.episodeList.length).toBeGreaterThan(0)
       );

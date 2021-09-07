@@ -17,16 +17,19 @@ export class EpisodeListComponent implements OnInit {
   public episodeList: Episode[] = [];
   public apiRicksponse: ApiRicksponse;
 
-
   constructor(private fetchEpisodesService: FetchEpisodesService) {}
+
+  // public testUrl = 'https://rickandmortyapi.com/api/episode?page=2';
+  // getNext() {
+  //   this.fetchEpisodesService.getAll(this.testUrl);
+  // }
 
   ngOnInit(): void {
     this.fetchEpisodesService
-      .getAll()
+      .getAll('https://rickandmortyapi.com/api/episode')
       .subscribe(
         (data) => (
           (this.episodeList = data.results),
-
           (this.apiRicksponse.info = data.info)
         )
       );

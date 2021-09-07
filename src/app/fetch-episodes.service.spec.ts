@@ -25,12 +25,12 @@ describe('FetchEpisodesService', () => {
   });
 
   it('should return all data', () => {
-    expect(service.getAll.length).toEqual(0);
+    expect(service.getAll.length).toEqual(1);
   });
 
-  it('getAll() should send one request to RnM api', () => {
+  it('getAll(epApiUrl) should send one request to RnM api', () => {
     service
-      .getAll()
+      .getAll(service.epApiUrl)
       .subscribe((data) => expect(data.results).toEqual(service.episodeList)); // start request
     httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
     httpTestController.verify(); // assertion; expects one request to url above

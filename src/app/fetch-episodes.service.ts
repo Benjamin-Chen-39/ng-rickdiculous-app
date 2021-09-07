@@ -16,9 +16,10 @@ export class FetchEpisodesService {
   public episodeList: Episode[] = [];
   public info: {};
 
-  private epApiUrl = 'https://rickandmortyapi.com/api/episode';
+  public epApiUrl = 'https://rickandmortyapi.com/api/episode';
 
-  getAll(): Observable<ApiRicksponse> {
+  getAll(apiUrl: string): Observable<ApiRicksponse> {
+    this.epApiUrl = apiUrl;
     return this.http.get<any>(this.epApiUrl).pipe(
       tap((data) => {
         this.episodeList = data.results;
