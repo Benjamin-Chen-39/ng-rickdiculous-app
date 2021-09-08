@@ -22,6 +22,7 @@ export class FetchEpisodesService {
   // public info: {};
   public apiRicksponse = {} as ApiRicksponse;
   public epApiUrl = 'https://rickandmortyapi.com/api/episode';
+  public pageNumber: number;
 
   getAll(apiUrl: string): Observable<ApiRicksponse> {
     this.epApiUrl = apiUrl;
@@ -29,8 +30,13 @@ export class FetchEpisodesService {
       tap((data) => {
         this.apiRicksponse.results = data.results;
         this.apiRicksponse.info = data.info;
+        this.pageNumber = Math.ceil(this.apiRicksponse.results[0].id / 20);
       })
     );
+  }
+
+  getPageNumber() {
+    return this.pageNumber;
   }
 
   constructor(private http: HttpClient) {}

@@ -14,20 +14,33 @@ import { ApiRicksponse } from '../fetch-episodes.service';
   styleUrls: ['./episode-list.component.css'],
 })
 export class EpisodeListComponent implements OnInit {
-  // public episodeList: Episode[] = [];
   public apiRicksponse: ApiRicksponse;
-  // public nextUrl;
+  public pageNumber: number;
 
   constructor(private fetchEpisodesService: FetchEpisodesService) {
     this.apiRicksponse = {} as ApiRicksponse;
   }
 
   getNext() {
-    this.fetchEpisodesService.getAll(this.apiRicksponse.info.next)
+    this.fetchEpisodesService
+      .getAll(this.apiRicksponse.info.next)
       .subscribe(
         (data) => (
           (this.apiRicksponse.results = data.results),
-          (this.apiRicksponse.info = data.info)
+          (this.apiRicksponse.info = data.info),
+          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
+        )
+      );
+  }
+
+  getPrev() {
+    this.fetchEpisodesService
+      .getAll(this.apiRicksponse.info.prev)
+      .subscribe(
+        (data) => (
+          (this.apiRicksponse.results = data.results),
+          (this.apiRicksponse.info = data.info),
+          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
         )
       );
   }
@@ -38,8 +51,8 @@ export class EpisodeListComponent implements OnInit {
       .subscribe(
         (data) => (
           (this.apiRicksponse.results = data.results),
-          (this.apiRicksponse.info = data.info)
-          // (this.nextUrl = data.info.next)
+          (this.apiRicksponse.info = data.info),
+          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
         )
       );
   }

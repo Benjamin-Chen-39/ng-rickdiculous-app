@@ -6,7 +6,18 @@ import {
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 
-const apiResponse: {} = {info: {next: 'https://rickandmortyapi.com/api/episode?page=2'}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
+const apiResponse: {} = {
+  info: { next: 'https://rickandmortyapi.com/api/episode?page=2' },
+  results: [
+    {
+      name: 'Testor-Morty',
+      episode: 'TEST02',
+      id: 123,
+      airDate: 'May 1, 2014',
+      characters: [],
+    },
+  ],
+};
 
 describe('FetchEpisodesService', () => {
   let service: FetchEpisodesService;
@@ -33,14 +44,13 @@ describe('FetchEpisodesService', () => {
   it('getAll(epApiUrl) should send one request to RnM api', () => {
     service
       .getAll(service.epApiUrl)
-      .subscribe((data) => expect(data.info.next).toEqual(service.apiRicksponse.info.next)); // start request
-      const res =  httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
-
-
-      res.flush(apiResponse);
-      httpTestController.verify(); // assertion; expects one request to url above
-
+      .subscribe((data) =>
+        expect(data.info.next).toEqual(service.apiRicksponse.info.next)
+      ); // start request
+    const res = httpTestController.expectOne(
+      'https://rickandmortyapi.com/api/episode'
+    );
+    res.flush(apiResponse);
+    httpTestController.verify(); // assertion; expects one request to url above
   });
-
-
 });

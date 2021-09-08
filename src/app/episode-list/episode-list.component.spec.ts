@@ -9,7 +9,18 @@ import {
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 ///////////////
-const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
+const apiResponse: {} = {
+  info: {},
+  results: [
+    {
+      name: 'Testor-Morty',
+      episode: 'TEST02',
+      id: 123,
+      airDate: 'May 1, 2014',
+      characters: [],
+    },
+  ],
+};
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
   let fixture: ComponentFixture<EpisodeListComponent>;
@@ -41,8 +52,8 @@ describe('EpisodeListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EpisodeListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     html = fixture.nativeElement;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -50,12 +61,9 @@ describe('EpisodeListComponent', () => {
   });
 
   it('Button should call next page', () => {
+    spyOn(component, 'getNext');
     const nextButton = html.querySelector('#nextPage');
     nextButton.click();
-    expect(component.getNext()).toHaveBeenCalled();
-
+    expect(component.getNext).toHaveBeenCalled();
   });
-
-
-
 });
