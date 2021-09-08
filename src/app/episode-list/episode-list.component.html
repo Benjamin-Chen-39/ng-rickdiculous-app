@@ -1,10 +1,13 @@
 <p>episode-list works!</p>
+
 <div id="episodeDisplay" *ngFor="let episode of apiRicksponse.results">
   <div class="episode">
     <div class="epName">Name: {{ episode.name }}</div>
     <div class="ep">Episode: {{ episode.episode }}</div>
+    <a [routerLink]="['/episode', episode.id]">Details</a>
   </div>
 </div>
+<router-outlet></router-outlet>
 <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
 <div>Page: {{ pageNumber }} of {{ apiRicksponse.info.pages }}</div>
 <button id="nextPage" (click)="getNext()">NEXT PAGE</button>

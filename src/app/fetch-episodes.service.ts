@@ -18,7 +18,7 @@ export interface ApiRicksponse {
   providedIn: 'root',
 })
 export class FetchEpisodesService {
-  // public episodeList: Episode[] = [];
+  public episode: Episode;
   // public info: {};
   public apiRicksponse = {} as ApiRicksponse;
   public epApiUrl = 'https://rickandmortyapi.com/api/episode';
@@ -31,6 +31,15 @@ export class FetchEpisodesService {
         this.apiRicksponse.results = data.results;
         this.apiRicksponse.info = data.info;
         this.pageNumber = Math.ceil(this.apiRicksponse.results[0].id / 20);
+      })
+    );
+  }
+
+  getOneEp(id: string): Observable<Episode> {
+    this.epApiUrl = 'https://rickandmortyapi.com/api/episode/' + id;
+    return this.http.get<any>(this.epApiUrl).pipe(
+      tap((data) => {
+        this.episode = data;
       })
     );
   }

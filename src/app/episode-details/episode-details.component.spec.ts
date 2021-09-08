@@ -5,7 +5,7 @@ import {
   fakeAsync,
 } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import {Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { EpisodeDetailsComponent } from './episode-details.component';
 
 describe('EpisodeDetailsComponent', () => {

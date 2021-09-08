@@ -5,8 +5,8 @@ import { EpisodeDetailsComponent } from './episode-details/episode-details.compo
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 
 const routes: Routes = [
-  { path: 'episode-details', component: EpisodeDetailsComponent },
   { path: 'episode-list', component: EpisodeListComponent },
+  { path: 'episode/:id', component: EpisodeDetailsComponent },
 ];
 
 @NgModule({
