@@ -3,11 +3,6 @@ import { Episode } from '../episode';
 import { FetchEpisodesService } from '../fetch-episodes.service';
 import { ApiRicksponse } from '../fetch-episodes.service';
 
-// export interface ApiRicksponse{
-//   info?: {};
-//   results: Episode[];
-// }
-
 @Component({
   selector: 'app-episode-list',
   templateUrl: './episode-list.component.html',

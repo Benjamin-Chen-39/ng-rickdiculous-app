@@ -1,13 +1,8 @@
 <p>episode-list works!</p>
 <div id="episodeDisplay" *ngFor="let episode of apiRicksponse.results">
   <div class="episode">
-    <div class="epId">ID: {{ episode.id }}</div>
     <div class="epName">Name: {{ episode.name }}</div>
-    <div class="air_date">Air Date: {{ episode.air_date }}</div>
     <div class="ep">Episode: {{ episode.episode }}</div>
-    <div class="characters">Characters: {{ episode.characters }}</div>
-    <div class="url">Link: {{ episode.url }}</div>
-    <div class="created">Created: {{ episode.created }}</div>
   </div>
 </div>
 <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
