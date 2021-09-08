@@ -14,9 +14,9 @@ import { ApiRicksponse } from '../fetch-episodes.service';
   styleUrls: ['./episode-list.component.css'],
 })
 export class EpisodeListComponent implements OnInit {
-  public episodeList: Episode[] = [];
+  // public episodeList: Episode[] = [];
   public apiRicksponse: ApiRicksponse;
-  public nextUrl;
+  // public nextUrl;
 
   constructor(private fetchEpisodesService: FetchEpisodesService) {
     this.apiRicksponse = {} as ApiRicksponse;
@@ -26,7 +26,7 @@ export class EpisodeListComponent implements OnInit {
     this.fetchEpisodesService.getAll(this.apiRicksponse.info.next)
       .subscribe(
         (data) => (
-          (this.episodeList = data.results),
+          (this.apiRicksponse.results = data.results),
           (this.apiRicksponse.info = data.info)
         )
       );
@@ -37,7 +37,7 @@ export class EpisodeListComponent implements OnInit {
       .getAll('https://rickandmortyapi.com/api/episode')
       .subscribe(
         (data) => (
-          (this.episodeList = data.results),
+          (this.apiRicksponse.results = data.results),
           (this.apiRicksponse.info = data.info)
           // (this.nextUrl = data.info.next)
         )

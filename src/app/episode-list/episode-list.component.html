@@ -1,5 +1,5 @@
 <p>episode-list works!</p>
-<div id="episodeDisplay" *ngFor="let episode of episodeList">
+<div id="episodeDisplay" *ngFor="let episode of apiRicksponse.results">
   <div class="episode">
     <div id="epId">ID: {{ episode.id }}</div>
     <div id="epName">Name: {{ episode.name }}</div>
@@ -10,4 +10,4 @@
     <div id="created">Created: {{ episode.created }}</div>
   </div>
 </div>
-<button (click)="getNext()">NEXT PAGE</button>
+<button id='nextPage' (click)="getNext()">NEXT PAGE</button>

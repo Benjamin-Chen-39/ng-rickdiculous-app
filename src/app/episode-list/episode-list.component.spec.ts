@@ -14,6 +14,7 @@ describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
   let fixture: ComponentFixture<EpisodeListComponent>;
   let element;
+  let html;
 
   ////////////
   let service: FetchEpisodesService;
@@ -41,46 +42,20 @@ describe('EpisodeListComponent', () => {
     fixture = TestBed.createComponent(EpisodeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    html = fixture.nativeElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fill the ApiRicksponse interface', () => {
-
-    // service
-    //   .getAll('https://rickandmortyapi.com/api/episode')
-    //   .subscribe((data) =>
-    //     {
-    //       expect(component.episodeList.length).toBeGreaterThan(0)
-    //       console.log("data from subscribe", data);
-
-    //     }
-    //   );
-
-      const res = httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
-      console.log('before')
-      res.flush(apiResponse);
-      // console.log('this is a req', res.request);
-      httpTestController.verify(); // assertion; expects one request to url above
-      expect(component.episodeList.length).toBeGreaterThan(0)
+  it('Button should call next page', () => {
+    const nextButton = html.querySelector('#nextPage');
+    nextButton.click();
+    expect(component.getNext()).toHaveBeenCalled();
 
   });
 
-  it('get next page api', () => {
-    // service
-    //   .getAll('https://rickandmortyapi.com/api/episode')
-    //   .subscribe((data) =>
-    //     expect(component.apiRicksponse.info.next).toEqual('https://rickandmortyapi.com/api/episode?page=2')
-    //   );
-
-      const res = httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
-      res.flush(apiResponse);
-      httpTestController.verify(); // assertion; expects one request to url above
-      expect(component.apiRicksponse.info.next).toEqual('https://rickandmortyapi.com/api/episode?page=2')
 
 
-
-   });
 });

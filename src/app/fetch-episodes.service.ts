@@ -5,11 +5,11 @@ import { Episode } from './episode';
 import { HttpClient } from '@angular/common/http';
 
 export interface ApiRicksponse {
-  info?: {
+  info: {
     count: number;
     pages: number;
-    next: any;
-    prev: any;
+    next: string | null;
+    prev: string | null;
   };
   results: Episode[];
 }
@@ -18,17 +18,17 @@ export interface ApiRicksponse {
   providedIn: 'root',
 })
 export class FetchEpisodesService {
-  public episodeList: Episode[] = [];
-  public info: {};
-
+  // public episodeList: Episode[] = [];
+  // public info: {};
+  public apiRicksponse = {} as ApiRicksponse;
   public epApiUrl = 'https://rickandmortyapi.com/api/episode';
 
   getAll(apiUrl: string): Observable<ApiRicksponse> {
     this.epApiUrl = apiUrl;
     return this.http.get<any>(this.epApiUrl).pipe(
       tap((data) => {
-        this.episodeList = data.results;
-        this.info = data.info;
+        this.apiRicksponse.results = data.results;
+        this.apiRicksponse.info = data.info;
       })
     );
   }
