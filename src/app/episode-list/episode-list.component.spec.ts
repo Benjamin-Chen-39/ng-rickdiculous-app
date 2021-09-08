@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 ///////////////
-
+const apiResponse: {} = {info: {}, results: [{name: 'Testor-Morty', episode: 'TEST02', id: 123, airDate: 'May 1, 2014', characters: []}]};
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
   let fixture: ComponentFixture<EpisodeListComponent>;
@@ -48,10 +48,39 @@ describe('EpisodeListComponent', () => {
   });
 
   it('should fill the ApiRicksponse interface', () => {
-    service
-      .getAll('https://rickandmortyapi.com/api/episode')
-      .subscribe((data) =>
-        expect(component.episodeList.length).toBeGreaterThan(0)
-      );
+
+    // service
+    //   .getAll('https://rickandmortyapi.com/api/episode')
+    //   .subscribe((data) =>
+    //     {
+    //       expect(component.episodeList.length).toBeGreaterThan(0)
+    //       console.log("data from subscribe", data);
+
+    //     }
+    //   );
+
+      const res = httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
+      console.log('before')
+      res.flush(apiResponse);
+      // console.log('this is a req', res.request);
+      httpTestController.verify(); // assertion; expects one request to url above
+      expect(component.episodeList.length).toBeGreaterThan(0)
+
   });
+
+  it('get next page api', () => {
+    // service
+    //   .getAll('https://rickandmortyapi.com/api/episode')
+    //   .subscribe((data) =>
+    //     expect(component.apiRicksponse.info.next).toEqual('https://rickandmortyapi.com/api/episode?page=2')
+    //   );
+
+      const res = httpTestController.expectOne('https://rickandmortyapi.com/api/episode');
+      res.flush(apiResponse);
+      httpTestController.verify(); // assertion; expects one request to url above
+      expect(component.apiRicksponse.info.next).toEqual('https://rickandmortyapi.com/api/episode?page=2')
+
+
+
+   });
 });

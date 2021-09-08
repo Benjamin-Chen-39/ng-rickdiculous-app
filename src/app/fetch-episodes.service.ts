@@ -5,7 +5,12 @@ import { Episode } from './episode';
 import { HttpClient } from '@angular/common/http';
 
 export interface ApiRicksponse {
-  info?: {};
+  info?: {
+    count: number;
+    pages: number;
+    next: any;
+    prev: any;
+  };
   results: Episode[];
 }
 
