@@ -19,7 +19,6 @@ export interface ApiRicksponse {
 })
 export class FetchEpisodesService {
   public episode: Episode;
-  // public info: {};
   public apiRicksponse = {} as ApiRicksponse;
   public epApiUrl = 'https://rickandmortyapi.com/api/episode';
   public pageNumber: number;
@@ -38,13 +37,9 @@ export class FetchEpisodesService {
     );
   }
 
-  getOneEp(id: string): Observable<Episode> {
-    this.epApiUrl = 'https://rickandmortyapi.com/api/episode/' + id;
-    return this.http.get<any>(this.epApiUrl).pipe(
-      tap((data) => {
-        this.episode = data;
-      })
-    );
+
+  getOne(id: string): Episode {
+    return this.apiRicksponse.results.find(ep => parseInt(id) === ep.id);
   }
 
   getPageNumber() {
