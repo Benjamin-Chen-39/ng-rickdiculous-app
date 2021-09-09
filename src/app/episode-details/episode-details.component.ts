@@ -11,8 +11,7 @@ import { Character } from '../character';
   styleUrls: ['./episode-details.component.css'],
 })
 export class EpisodeDetailsComponent implements OnInit {
-  episode: Episode = null;
-  characters: Character[];
+  episode: Episode;
 
   constructor(
     private fetchEpisodesService: FetchEpisodesService,

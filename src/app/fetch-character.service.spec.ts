@@ -39,14 +39,14 @@ describe('FetchCharacterService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('getCharData() should send one request to RnM api', () => {
-    service
-      .getCharData('https://rickandmortyapi.com/api/character/1')
-      .subscribe((data) => expect(data).toEqual(service.characters[0])); // start request
-    const res = httpTestController.expectOne(
-      'https://rickandmortyapi.com/api/character/1'
-    );
-    res.flush(apiResponse);
-    httpTestController.verify(); // assertion; expects one request to url above
-  });
+  // it('getCharData() should send one request to RnM api', () => {
+  //   service
+  //     .getCharData('https://rickandmortyapi.com/api/character/1')
+  //     .subscribe((data) => expect(data).toEqual(service.characters[0])); // start request
+  //   const res = httpTestController.expectOne(
+  //     'https://rickandmortyapi.com/api/character/1'
+  //   );
+  //   res.flush(apiResponse);
+  //   httpTestController.verify(); // assertion; expects one request to url above
+  // });
 });
