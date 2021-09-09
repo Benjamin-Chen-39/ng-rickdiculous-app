@@ -56,14 +56,14 @@ describe('EpisodeListComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-  // it('Button should call next page', () => {
-  //   spyOn(component, 'getNext');
-  //   const nextButton = html.querySelector('#nextPage');
-  //   nextButton.click();
-  //   expect(component.getNext).toHaveBeenCalled();
-  // });
+  it('Button should call next page', () => {
+    spyOn(component, 'getNext');
+    const nextButton = html.querySelector('#nextPage');
+    nextButton.click();
+    expect(component.getNext).toHaveBeenCalled();
+  });
 });

@@ -9,46 +9,39 @@ import { ApiRicksponse } from '../fetch-episodes.service';
   styleUrls: ['./episode-list.component.css'],
 })
 export class EpisodeListComponent implements OnInit {
-  public apiRicksponse: ApiRicksponse;
   public pageNumber: number;
 
-  constructor(private fetchEpisodesService: FetchEpisodesService) {
-    this.apiRicksponse = {} as ApiRicksponse;
+  constructor(private fetchEpisodesService: FetchEpisodesService) {}
+
+  getTotalPages() {
+    return this.fetchEpisodesService.pages;
+  }
+
+  getAllEps() {
+    return this.fetchEpisodesService.apiRicksponse.results;
   }
 
   getNext() {
     this.fetchEpisodesService
-      .getAll(this.apiRicksponse.info.next)
+      .getAll(this.fetchEpisodesService.apiRicksponse.info.next)
       .subscribe(
-        (data) => (
-          (this.apiRicksponse.results = data.results),
-          (this.apiRicksponse.info = data.info),
-          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
-        )
+        (data) => (this.pageNumber = this.fetchEpisodesService.getPageNumber())
       );
   }
 
   getPrev() {
     this.fetchEpisodesService
-      .getAll(this.apiRicksponse.info.prev)
+      .getAll(this.fetchEpisodesService.apiRicksponse.info.prev)
       .subscribe(
-        (data) => (
-          (this.apiRicksponse.results = data.results),
-          (this.apiRicksponse.info = data.info),
-          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
-        )
+        (data) => (this.pageNumber = this.fetchEpisodesService.getPageNumber())
       );
   }
 
   ngOnInit(): void {
     this.fetchEpisodesService
       .getAll('https://rickandmortyapi.com/api/episode')
-      .subscribe(
-        (data) => (
-          (this.apiRicksponse.results = data.results),
-          (this.apiRicksponse.info = data.info),
-          (this.pageNumber = this.fetchEpisodesService.getPageNumber())
-        )
-      );
+      .subscribe((data) => {
+        this.pageNumber = this.fetchEpisodesService.getPageNumber();
+      });
   }
 }

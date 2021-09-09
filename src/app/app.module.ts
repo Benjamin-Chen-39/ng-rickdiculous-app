@@ -6,15 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { EpisodeDisplayComponent } from './episode-display/episode-display.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EpisodeListComponent,
-    HomePageComponent,
-    EpisodeDisplayComponent,
-  ],
+  declarations: [AppComponent, EpisodeListComponent, HomePageComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
