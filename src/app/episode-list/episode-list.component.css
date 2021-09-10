@@ -1,9 +1,0 @@
-#container {
-  display: flex;
-}
-
-#episodeDisplay {
-  display: grid;
-  grid-template-rows: 25% 25% 25% 25%;
-  grid-template-columns: 20% 20% 20% 20%;
-}
