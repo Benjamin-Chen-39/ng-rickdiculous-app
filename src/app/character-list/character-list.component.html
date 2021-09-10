@@ -1,4 +1,13 @@
-List of characters: <br />
-<div id="list">
-  <div *ngFor="let character of charList">{{ character.name }}</div>
+<h3>Characters in this Episode:</h3>
+<br />
+
+<div class="gallery-grid">
+  <div *ngFor="let character of charList">
+  <figure class="gallery-frame">
+    <div class="card large">
+      <img class="thumbnail" src={{character.image}} alt="epThumbnail">
+        <div class="ep">Character: {{ character.name }} </div>
+    </div>
+  </figure>
+  </div>
 </div>
