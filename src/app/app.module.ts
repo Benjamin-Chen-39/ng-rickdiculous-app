@@ -8,6 +8,8 @@ import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
 import { EpisodePageComponent } from './episode-page/episode-page.component';
+import { EpisodeDisplayComponent } from './episode-display/episode-display.component';
+import { CharacterListComponent } from './character-list/character-list.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { EpisodePageComponent } from './episode-page/episode-page.component';
     HomePageComponent,
     EpisodeDetailsComponent,
     EpisodePageComponent,
+    EpisodeDisplayComponent,
+    CharacterListComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
