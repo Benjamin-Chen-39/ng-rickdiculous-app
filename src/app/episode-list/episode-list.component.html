@@ -1,14 +1,21 @@
 <!-- <p>episode-list works!</p> -->
-<div id="episodeDisplay" *ngFor="let episode of getAllEps()">
-  <div class="episode">
-    <div class="ep">Episode: {{ episode.episode }}</div>
-    <a [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a>
-    <!-- <a routerLink="episode-display">{{ episode.name }}</a> -->
+<div id="page">
+  <div id="container">
+    <div id="episodeDisplay">
+      <div class="episode" *ngFor="let episode of getAllEps()">
+        <div class="ep">Episode: {{ episode.episode }}</div>
+        <div class="ep">{{ episode.name }}</div>
+        <!-- <a [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a> -->
+        <a routerLink="episode-display">Details</a>
+      </div>
+    </div>
+
+    <div id="nav">
+      <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
+      <div>Page: {{ pageNumber }} of {{ getTotalPages() }}</div>
+      <button id="nextPage" (click)="getNext()">NEXT PAGE</button>
+    </div>
   </div>
 </div>
 
-<div>
-  <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
-  <div>Page: {{ pageNumber }} of {{ getTotalPages() }}</div>
-  <button id="nextPage" (click)="getNext()">NEXT PAGE</button>
-</div>
+<router-outlet></router-outlet>
