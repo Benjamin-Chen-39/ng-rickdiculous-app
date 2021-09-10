@@ -8,7 +8,6 @@ import { EpisodeDisplayComponent } from './episode-display/episode-display.compo
 const routes: Routes = [
   { path: 'episode-list', component: EpisodeListComponent },
   { path: 'episode/:id', component: EpisodeDetailsComponent },
-  { path: 'episode-display', component: EpisodeDisplayComponent },
 ];
 
 @NgModule({
