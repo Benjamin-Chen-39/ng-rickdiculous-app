@@ -1,21 +1,22 @@
 <!-- <p>episode-list works!</p> -->
-<div id="page">
-  <div id="container">
-    <div id="episodeDisplay">
-      <div class="episode" *ngFor="let episode of getAllEps()">
+<div class="gallery-grid">
+  <div class="episodeDisplay" *ngFor="let episode of getAllEps()">
+    <figure class="gallery-frame">
+      <div class="card large">
+        <img class="thumbnail" src="https://via.placeholder.com/200" alt="epThumbnail">
         <div class="ep">Episode: {{ episode.episode }}</div>
-        <div class="ep">{{ episode.name }}</div>
-        <!-- <a [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a> -->
-        <a routerLink="episode-display">Details</a>
+        <!-- <div class="ep">{{ episode.name }}</div> -->
+        <a class="epName" [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a>
+        <!-- <a routerLink="episode-display">Details</a> -->
       </div>
-    </div>
-
-    <div id="nav">
-      <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
-      <div>Page: {{ pageNumber }} of {{ getTotalPages() }}</div>
-      <button id="nextPage" (click)="getNext()">NEXT PAGE</button>
-    </div>
+    </figure>
   </div>
 </div>
 
-<router-outlet></router-outlet>
+    <div class="toolbar">
+      <button class="button" (click)="getPrev()">PREVIOUS PAGE</button>
+      <span>Page: {{ pageNumber }} of {{ getTotalPages() }}</span>
+      <button class="button" (click)="getNext()">NEXT PAGE</button>
+    </div>
+
+
