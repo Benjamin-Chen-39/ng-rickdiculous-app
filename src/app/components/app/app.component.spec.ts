@@ -16,6 +16,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render search form', () => {
-  });
+  // it('should render search form', () => {
+  // });
 });

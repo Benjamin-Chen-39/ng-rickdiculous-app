@@ -3,18 +3,26 @@
   <div class="episodeDisplay" *ngFor="let episode of getAllEps()">
     <figure class="gallery-frame">
       <div class="card large">
-        <img class="thumbnail" src="https://via.placeholder.com/200" alt="epThumbnail">
+        <img
+          class="thumbnail"
+          src="https://via.placeholder.com/200"
+          alt="epThumbnail"
+        />
         <div class="ep">Episode: {{ episode.episode }}</div>
         <!-- <div class="ep">{{ episode.name }}</div> -->
-        <a class="epName" [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a>
+        <a class="epName" [routerLink]="['/episode', episode.id || 1]">{{
+          episode.name
+        }}</a>
         <!-- <a routerLink="episode-display">Details</a> -->
       </div>
     </figure>
   </div>
 </div>
 
-    <div class="toolbar">
-      <button class="button" (click)="getPrev()">PREVIOUS PAGE</button>
-      <span>Page: {{ pageNumber }} of {{ getTotalPages() }}</span>
-      <button class="button" (click)="getNext()">NEXT PAGE</button>
-    </div>
+<div class="toolbar">
+  <button class="button" id="prevPage" (click)="getPrev()">
+    PREVIOUS PAGE
+  </button>
+  <span>Page: {{ pageNumber }} of {{ getTotalPages() }}</span>
+  <button class="button" id="nextPage" (click)="getNext()">NEXT PAGE</button>
+</div>
