@@ -1,16 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Input } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Episode } from '../episode';
 import { EpisodePageComponent } from './episode-page.component';
 
 describe('EpisodePageComponent', () => {
   let component: EpisodePageComponent;
   let fixture: ComponentFixture<EpisodePageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [EpisodePageComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [EpisodePageComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EpisodePageComponent);

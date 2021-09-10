@@ -8,7 +8,14 @@ import { Episode } from '../episode';
 })
 export class EpisodePageComponent implements OnInit {
   @Input() inputEpisode: Episode;
+  testEp: Episode = new Episode();
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.inputEpisode) {
+      this.testEp = this.inputEpisode;
+    }
+
+  }
 }

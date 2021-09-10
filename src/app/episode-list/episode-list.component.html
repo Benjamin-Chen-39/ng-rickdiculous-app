@@ -1,12 +1,11 @@
 <!-- <p>episode-list works!</p> -->
+<router-outlet></router-outlet>
 <div id="episodeDisplay" *ngFor="let episode of getAllEps()">
   <div class="episode">
     <div class="ep">Episode: {{ episode.episode }}</div>
     <a [routerLink]="['/episode', episode.id || 1]">{{ episode.name }}</a>
   </div>
 </div>
-
-<router-outlet></router-outlet>
 
 <div>
   <button id="prevPage" (click)="getPrev()">PREVIOUS PAGE</button>
